@@ -7,4 +7,4 @@ Selenium - Test Loginscreen of PrinterLogic
 
 I run a few test scripts on the PrinterLogic login page. I try to find any potential security flaws. I use the Eclipse IDE with Java.
 
-The Java code is in the EclipseWorkSpace folder in scr.
+The Java code is in the EclipseWorkSpace folder in src.
