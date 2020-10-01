@@ -77,9 +77,9 @@ public class LoginTest {
 	}
 	
 	//Test a Valid Login
-	public void test1(String b, String bL, String w) throws InterruptedException {
+	public void test1(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 1\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         
         login("BrandonJackson","@Tyler1998");
@@ -88,9 +88,9 @@ public class LoginTest {
 	}
 	
 	// Test Invalid Password with Valid Username
-	public void test2(String b, String bL, String w) throws InterruptedException {
+	public void test2(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 2\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         
         login("BrandonJackson","Hi1908");
@@ -99,9 +99,9 @@ public class LoginTest {
 	}
 	
 	// Test Invalid Username with Valid Password
-	public void test3(String b, String bL, String w) throws InterruptedException {
+	public void test3(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 3\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         
         login("JamesBond","@Tyler1998");
@@ -110,9 +110,9 @@ public class LoginTest {
 	}
 	
 	// Test Valid Username. See if brute force is possible and how fast someone could brute force 
-	public void test4(String b, String bL, String w) throws InterruptedException {	
+	public void test4(String browser, String browserLocation, String web) throws InterruptedException {	
 		System.out.println("Test 4\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         int count = 0;
         long start = System.currentTimeMillis();
@@ -139,9 +139,9 @@ public class LoginTest {
 	}
 	
 	// Change Visibility to Password so be able to see it
-	public void test5(String b, String bL, String w) throws InterruptedException {	
+	public void test5(String browser, String browserLocation, String web) throws InterruptedException {	
 		System.out.println("Test 5\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         driver.findElement(By.id("relogin_user")).sendKeys("BrandonJackson");
         driver.findElement(By.id("relogin_password")).sendKeys("@Tyler1998");
@@ -157,9 +157,9 @@ public class LoginTest {
 	
 	
 	//Test no Username
-	public void test6(String b, String bL, String w) throws InterruptedException {
+	public void test6(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 11\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         
         login("","@Tyler1998");
@@ -168,9 +168,9 @@ public class LoginTest {
 	}
 	
 	//Test no Username and no password
-	public void test7(String b, String bL, String w) throws InterruptedException {
+	public void test7(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 12\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         
         login("","");
@@ -179,9 +179,9 @@ public class LoginTest {
 	}
 	
 	//Test Add New Folder, Then Delete Folder
-	public void test8(String b, String bL, String w) throws InterruptedException {
+	public void test8(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 8\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
 
         login("BrandonJackson","@Tyler1998");
         
@@ -191,7 +191,7 @@ public class LoginTest {
         driver.findElement(By.id("popupitem_city")).click();
         Thread.sleep(2000);
         driver.findElement(By.id("CityName")).sendKeys("New York");
-        driver.findElement(By.cssSelector("#add-btn > .ui-button-text")).click();
+        driver.findElement(By.id("add-btn")).click();
         Thread.sleep(2000);
         
         //Delete Folder
@@ -201,16 +201,16 @@ public class LoginTest {
         Thread.sleep(2000);
         driver.findElement(By.id("delete_confirm_text")).sendKeys("DELETE");
         Thread.sleep(2000);
-        driver.findElement(By.cssSelector("#delete_confirm_btn_ok > .ui-button-text")).click();
+        driver.findElement(By.id("delete_confirm_btn_ok")).click();
         
         Thread.sleep(4000);
         driver.close();
 	}
 		
 	//Makes List of Links that are exposed
-	public void test9(String b, String bL, String w) throws InterruptedException {
+	public void test9(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 9\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
 		WebElement element;
 		List<WebElement> elements = driver.findElements(By.tagName("a")); // <-- change this to link or any other tag
@@ -235,9 +235,9 @@ public class LoginTest {
 	}
 	
 	//Test no Password
-	public void test10(String b, String bL, String w) throws InterruptedException {
+	public void test10(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 10\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         
         login("BrandonJackson","");
@@ -284,9 +284,9 @@ public class LoginTest {
 	
 	
 	//Check Lost Password Link
-	public void test11(String b, String bL, String w) throws InterruptedException {
+	public void test11(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 13\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         
         CheckForBrokenLinks("forgot-password-container");
@@ -296,12 +296,42 @@ public class LoginTest {
 	
 	
 	//Check Privacy Policy Link
-	public void test12(String b, String bL, String w) throws InterruptedException {
+	public void test12(String browser, String browserLocation, String web) throws InterruptedException {
 		System.out.println("Test 14\n");
-		Setup(b,bL,w);
+		Setup(browser,browserLocation,web);
         Thread.sleep(2000);
         
         CheckForBrokenLinks("privacy-policy-container");
+        
+        driver.close();
+	}
+	
+	//Testing Special Characters
+	public void test13(String browser, String browserLocation, String web) throws InterruptedException {
+		System.out.println("Test 1\n");
+		Setup(browser,browserLocation,web);
+        Thread.sleep(2000);
+        
+        login("\"","\"");
+        testLogin();
+        
+        login("NULL","NULL");
+        testLogin();
+        
+        login("©","©");
+        testLogin();
+        
+        login("'","'");
+        testLogin();
+        
+        login("System.exit(0)","System.exit(0)");
+        testLogin();
+        
+        login("true","true");
+        testLogin();
+        
+        login("false","false");
+        testLogin();
         
         driver.close();
 	}
@@ -324,6 +354,7 @@ public class LoginTest {
 		//l.test10("chrome",l.chromeLocation,l.website);
 		//l.test11("chrome",l.chromeLocation,l.website);
 		//l.test12("chrome",l.chromeLocation,l.website);
+		//l.test13("chrome",l.chromeLocation,l.website);
     }
 }
 
