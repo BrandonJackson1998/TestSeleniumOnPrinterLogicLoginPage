@@ -77,9 +77,9 @@ public class LoginTest {
 	}
 	
 	//Test a Valid Login
-	public void test1() throws InterruptedException {
+	public void test1(String b, String bL, String w) throws InterruptedException {
 		System.out.println("Test 1\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
         
         login("BrandonJackson","@Tyler1998");
@@ -88,9 +88,9 @@ public class LoginTest {
 	}
 	
 	// Test Invalid Password with Valid Username
-	public void test2() throws InterruptedException {
+	public void test2(String b, String bL, String w) throws InterruptedException {
 		System.out.println("Test 2\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
         
         login("BrandonJackson","Hi1908");
@@ -99,9 +99,9 @@ public class LoginTest {
 	}
 	
 	// Test Invalid Username with Valid Password
-	public void test3() throws InterruptedException {
+	public void test3(String b, String bL, String w) throws InterruptedException {
 		System.out.println("Test 3\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
         
         login("JamesBond","@Tyler1998");
@@ -110,9 +110,9 @@ public class LoginTest {
 	}
 	
 	// Test Valid Username. See if brute force is possible and how fast someone could brute force 
-	public void test4() throws InterruptedException {	
+	public void test4(String b, String bL, String w) throws InterruptedException {	
 		System.out.println("Test 4\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
         int count = 0;
         long start = System.currentTimeMillis();
@@ -139,9 +139,9 @@ public class LoginTest {
 	}
 	
 	// Change Visibility to Password so be able to see it
-	public void test5() throws InterruptedException {	
+	public void test5(String b, String bL, String w) throws InterruptedException {	
 		System.out.println("Test 5\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
         driver.findElement(By.id("relogin_user")).sendKeys("BrandonJackson");
         driver.findElement(By.id("relogin_password")).sendKeys("@Tyler1998");
@@ -155,32 +155,33 @@ public class LoginTest {
         driver.close();
 	}
 	
-	//Test Login on FireFox
-	public void test6() throws InterruptedException {
-		System.out.println("Test 6\n");
-		Setup("firefox",fireFoxLocation,website);
+	
+	//Test no Username
+	public void test6(String b, String bL, String w) throws InterruptedException {
+		System.out.println("Test 11\n");
+		Setup(b,bL,w);
         Thread.sleep(2000);
-
-        login("BrandonJackson","@Tyler1998");
+        
+        login("","@Tyler1998");
         testLogin();
         driver.close();
 	}
 	
-	//Test Login on Edge
-	public void test7() throws InterruptedException {
-		System.out.println("Test 7\n");
-		Setup("edge",edgeLocation,website);
+	//Test no Username and no password
+	public void test7(String b, String bL, String w) throws InterruptedException {
+		System.out.println("Test 12\n");
+		Setup(b,bL,w);
         Thread.sleep(2000);
         
-        login("BrandonJackson","@Tyler1998");
+        login("","");
         testLogin();
         driver.close();
 	}
 	
 	//Test Add New Folder, Then Delete Folder
-	public void test8() throws InterruptedException {
+	public void test8(String b, String bL, String w) throws InterruptedException {
 		System.out.println("Test 8\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
 
         login("BrandonJackson","@Tyler1998");
         
@@ -207,9 +208,9 @@ public class LoginTest {
 	}
 		
 	//Makes List of Links that are exposed
-	public void test9() throws InterruptedException {
+	public void test9(String b, String bL, String w) throws InterruptedException {
 		System.out.println("Test 9\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
 		WebElement element;
 		List<WebElement> elements = driver.findElements(By.tagName("a")); // <-- change this to link or any other tag
@@ -234,34 +235,12 @@ public class LoginTest {
 	}
 	
 	//Test no Password
-	public void test10() throws InterruptedException {
+	public void test10(String b, String bL, String w) throws InterruptedException {
 		System.out.println("Test 10\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
         
         login("BrandonJackson","");
-        testLogin();
-        driver.close();
-	}
-	
-	//Test no Username
-	public void test11() throws InterruptedException {
-		System.out.println("Test 11\n");
-		Setup("chrome",chromeLocation,website);
-        Thread.sleep(2000);
-        
-        login("","@Tyler1998");
-        testLogin();
-        driver.close();
-	}
-	
-	//Test no Username and no password
-	public void test12() throws InterruptedException {
-		System.out.println("Test 12\n");
-		Setup("chrome",chromeLocation,website);
-        Thread.sleep(2000);
-        
-        login("","");
         testLogin();
         driver.close();
 	}
@@ -305,9 +284,9 @@ public class LoginTest {
 	
 	
 	//Check Lost Password Link
-	public void test13() throws InterruptedException {
+	public void test11(String b, String bL, String w) throws InterruptedException {
 		System.out.println("Test 13\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
         
         CheckForBrokenLinks("forgot-password-container");
@@ -317,9 +296,9 @@ public class LoginTest {
 	
 	
 	//Check Privacy Policy Link
-	public void test14() throws InterruptedException {
+	public void test12(String b, String bL, String w) throws InterruptedException {
 		System.out.println("Test 14\n");
-		Setup("chrome",chromeLocation,website);
+		Setup(b,bL,w);
         Thread.sleep(2000);
         
         CheckForBrokenLinks("privacy-policy-container");
@@ -331,20 +310,20 @@ public class LoginTest {
 	//Main Method Tests
 	public static void main(String[] args) throws InterruptedException {
 		LoginTest l = new LoginTest();
-		//l.test1();
-		//l.test2();
-		//l.test3();
-		//l.test4();
-		//l.test5();
-		//l.test6();
-		//l.test7();
-		//l.test8();
-		//l.test9();
-		//l.test10();
-		//l.test11();
-		//l.test12();
-		//l.test13();
-		//l.test14();
+		//l.test1("chrome",l.chromeLocation,l.website);
+		//l.test1("firefox",l.fireFoxLocation,l.website);
+		//l.test1("edge",l.edgeLocation,l.website);
+		//l.test2("chrome",l.chromeLocation,l.website);
+		//l.test3("chrome",l.chromeLocation,l.website);
+		//l.test4("chrome",l.chromeLocation,l.website);
+		//l.test5("chrome",l.chromeLocation,l.website);
+		//l.test6("chrome",l.chromeLocation,l.website);
+		//l.test7("chrome",l.chromeLocation,l.website);
+		//l.test8("chrome",l.chromeLocation,l.website);
+		//l.test9("chrome",l.chromeLocation,l.website);
+		//l.test10("chrome",l.chromeLocation,l.website);
+		//l.test11("chrome",l.chromeLocation,l.website);
+		//l.test12("chrome",l.chromeLocation,l.website);
     }
 }
 
